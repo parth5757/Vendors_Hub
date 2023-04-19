@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    {% include "css.html" %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/1.css' %}">
+</head>
+<body class="crm_body_bg">
+    <div class="main_content_iner ">
+        <div class="container-fluid p-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <img src="{% static 'img/logoVH4.png' %}" id="abc" alt="Vendor's Hub">  
+                    <div class="white_box mb_30">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6">                            
+                                <div class="modal-content cs_modal">
+                                    <div class="modal-header theme_bg_1 justify-content-center">
+                                        <h5 class="modal-title text_white">Resister</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="POST" action="{% url 'create_user' %}">
+                                            {% csrf_token %}
+                                            <label for="user_name">Name:</label>
+                                            <input type="text" id="user_name" name="user_name"><br><br>
+                                          
+                                            <label for="user_email">Email:</label>
+                                            <input type="email" id="user_email" name="user_email"><br><br>
+                                          
+                                            <label for="user_phone_number">Phone Number:</label>
+                                            <input type="text" id="user_phone_number" name="user_phone_number"><br><br>
+                                          
+                                            <label for="birth_date">Birth Date:</label>
+                                            <input type="date" id="birth_date" name="birth_date"><br><br>
+                                          
+                                            <label for="user_type">User Type:</label>
+                                            <input type="text" id="user_type" name="user_type"><br><br>
+                                          
+                                            <label for="organize_name">Organization Name:</label>
+                                            <input type="text" id="organize_name" name="organize_name"><br><br>
+                                          
+                                            <label for="password">Password:</label>
+                                            <input type="password" id="password" name="password"><br><br>
+                                          
+                                            <label for="city_id">City ID:</label>
+                                            <input type="text" id="city_id" name="city_id"><br><br>
+                                          
+                                            <label for="state_id">State ID:</label>
+                                            <input type="text" id="state_id" name="state_id"><br><br>
+                                          
+                                            <label for="area_id">Area ID:</label>
+                                            <input type="text" id="area_id" name="area_id"><br><br>
+                                          
+                                            <label for="gst_no">GST No:</label>
+                                            <input type="text" id="gst_no" name="gst_no"><br><br>
+                                          
+                                            <label for="id_proof">ID Proof:</label>
+                                            <input type="text" id="id_proof" name="id_proof"><br><br>
+                                          
+                                            <input type="submit" value="Submit">
+                                          </form>                                                                               
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        {% include "footer.html" %}
+    </div>
+        {% include "js.html" %}
+</body>
+</html>
