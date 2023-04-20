@@ -1,31 +1,5 @@
 from django.db import models, migrations
-
-# class Migration(migrations.Migration):
-#     dependencies = []
-#     operations = [
-#         migrations.CreateModel(
-#             name='PriceHistory',
-#             fields=[
-#                 ('id', models.AutoField(
-#                     verbose_name='ID',
-#                     serialize=False,
-#                     primary_key=True,
-#                     auto_created=True)),
-#                 ('date', models.DateTimeField(auto_now_add=True)),
-#                 ('price', models.DecimalField(decimal_places=2, max_digits=5)),
-#                 ('volume', models.PositiveIntegerField()),
-#                 ('total_btc', models.PositiveIntegerField()),
-#             ],
-#             options={
-#             },
-#             bases=(models.Model,),
-#         ),
-#     ]
-# # from django.contrib.auth.models import User
-
-
 # Create your models here.
-
 
 class User(models.Model):
     class Meta:
@@ -77,7 +51,7 @@ class Product(models.Model):
 class Signup(models.Model):
     class Meta:
         db_table = 'Signup'
-    u_id = models.AutoField(primary_key=True)
+    s_id = models.AutoField(primary_key=True)
     email = models.EmailField(max_length=255)
     password = models.CharField(max_length=255)
 
@@ -92,10 +66,10 @@ class Feedback(models.Model):
     modified_date = models.DateTimeField(auto_now=True)
 
 
-# class Contact(models.Model):
-#     class Meta:
-#         db_table = 'Contact'
-#     c_id = models.AutoField(primary_key=True)
-#     u_name = models.CharField(max_length=50)
-#     u_email = models.EmailField(max_length=255)
-#     comment = models.CharField(max_length=250)
+class Contact(models.Model):
+    class Meta:
+        db_table = 'Contact'
+    c_id = models.AutoField(primary_key=True)
+    u_name = models.CharField(max_length=50)
+    u_email = models.EmailField(max_length=255)
+    comment = models.CharField(max_length=250)

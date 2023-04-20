@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Signup, User, Category, Product, Feedback
+from .models import Signup, User, Category, Product, Feedback, Contact
 
 class SignupAdmin(admin.ModelAdmin):
     list_display = ('u_id', 'email', 'password')
@@ -29,7 +29,7 @@ class FeedbackAdmin(admin.ModelAdmin):
 
 admin.site.register(Feedback, FeedbackAdmin)
 
-# class ContactAdmin(admin.ModelAdmin):
-#     list_display = ('f_id', 'subject', 'u_name', 'message')
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('c_id', 'u_name', 'u_email', 'comment')
 
-# admin.site.register(Contact, ContactAdmin)
+admin.site.register(Contact, ContactAdmin)
