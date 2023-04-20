@@ -48,12 +48,12 @@ class Product(models.Model):
     stock = models.CharField(max_length=50)
     discount = models.CharField(max_length=50)
 
-class Signup(models.Model):
-    class Meta:
-        db_table = 'Signup'
-    s_id = models.AutoField(primary_key=True)
-    email = models.EmailField(max_length=255)
-    password = models.CharField(max_length=255)
+# class Signup(models.Model):
+#     class Meta:
+#         db_table = 'Signup'
+#     s_id = models.AutoField(primary_key=True)
+#     email = models.EmailField(max_length=255)
+#     password = models.CharField(max_length=255)
 
 class Feedback(models.Model):
     class Meta:

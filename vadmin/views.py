@@ -63,6 +63,3 @@ def register(request):
     #     return render(request, 'index.html')
     # # Render the registration form
     return render(request, 'register.html')
-
-def signup(register):
-    

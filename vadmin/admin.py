@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Signup, User, Category, Product, Feedback, Contact
+from .models import User, Category, Product, Feedback, Contact
 
-class SignupAdmin(admin.ModelAdmin):
-    list_display = ('u_id', 'email', 'password')
-admin.site.register(Signup, SignupAdmin)
+# class SignupAdmin(admin.ModelAdmin):
+#     list_display = ('u_id', 'email', 'password')
+# admin.site.register(Signup, SignupAdmin)
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('user_id', 'user_name', 'user_email', 'user_phone_number', 'birth_date', 'user_type', 'organize_name', 'city_id', 'state_id', 'area_id', 'gst_no', 'id_proof', 'created_date', 'created_by', 'modified_date', 'modified_by')
