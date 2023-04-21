@@ -1,11 +1,12 @@
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect  
 # from vadmin.forms import UserForm  
 # from vadmin.models import User  
 from django.shortcuts import render
+from django.urls import path
 # from .models import User
 
 def my_view(request):
@@ -13,6 +14,9 @@ def my_view(request):
 
 def product(request):
     return render(request, 'product.html')
+
+def add_product(request):
+    return render(request, 'add_product.html')
 
 def User(request):
     return render(request, 'users.html')
