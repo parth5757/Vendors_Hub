@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login as auth_login
+# from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
@@ -8,15 +8,38 @@ from django.shortcuts import render, redirect
 from django.shortcuts import render
 from django.urls import path
 # from .models import User
+from .models import Product
 
 def my_view(request):
     return render(request, 'index.html')
 
 def product(request):
-    return render(request, 'product.html')
+    products = Product.objects.all()
+    context = {'products': products}
+    return render(request, 'product.html', context)
 
 def add_product(request):
-    return render(request, 'add_product.html')
+    if request.method == 'POST':
+        name = request.POST['name']
+        price = request.POST['price']
+        description = request.POST['description']
+        # image = request.POST['image']
+        category = request.POST['category']
+        quantity = request.POST['quantity']
+        brand = request.POST['brand']
+        stock = request.POST['stock']
+        discount = request.POST['discount']
+        product = Product(name=name, price=price, description=description, category=category, quantity=quantity, brand=brand, stock=stock, discount=discount)
+        product.save()
+        return redirect('product')
+    else:
+        return render(request, 'add_product.html')
+    
+
+def delete_product(request, id):
+    product = Product.objects.get(p_id=id)    
+    product.delete()
+    return redirect('product')
 
 def User(request):
     return render(request, 'users.html')

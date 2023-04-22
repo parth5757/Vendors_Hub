@@ -57,7 +57,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Price</th>
                             <th scope="col">Description</th>
-                            <th scope="col">Image</th>
+                            <!-- <th scope="col">Image</th> -->
                             <th scope="col">Category</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Brand</th>
@@ -73,13 +73,19 @@
                             <td>{{ product.name }}</td>
                             <td>{{ product.price }}</td>
                             <td>{{ product.description }}</td>
-                            <td>{{ product.image }}</td>
+                            <!-- <td><img src="{{ product.image.url }}" alt="{{ product.name }}" width="100"></td> -->
                             <td>{{ product.category }}</td>
                             <td>{{ product.quantity }}</td>
                             <td>{{ product.brand }}</td>
                             <td>{{ product.stock }}</td>
                             <td>{{ product.discount }}</td>
-                            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                            <td>
+                              <a href="{% url 'delete_product' product.p_id %}" onclick="'sure'">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H15L21 9V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H7Z" stroke="#f76d7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 5H8V13L11 16H16V5Z" stroke="#884ffb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                              
+                              </a></td>
                           </tr>
                           {% endfor %}
                         </tbody>
