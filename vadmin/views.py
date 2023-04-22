@@ -2,12 +2,11 @@
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect  
-# from vadmin.forms import UserForm  
+from django.shortcuts import render, redirect, get_object_or_404
+from vadmin.forms import ProductForm
 # from vadmin.models import User  
 from django.shortcuts import render
 from django.urls import path
-# from .models import User
 from .models import Product
 
 def my_view(request):
@@ -40,6 +39,23 @@ def delete_product(request, id):
     product = Product.objects.get(p_id=id)    
     product.delete()
     return redirect('product')
+
+def update_product(request, id):
+    product = get_object_or_404(Product, p_id=id)
+    
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('product')
+    else:
+        form = ProductForm(instance=product)
+    
+    context = {
+        'form': form,
+    }
+    
+    return render(request, 'update_product.html', context)
 
 def User(request):
     return render(request, 'users.html')
