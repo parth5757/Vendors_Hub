@@ -16,7 +16,7 @@ admin.site.register(User, UserAdmin)
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('category_name', 'category_description', 'created_date', 'modified_date')
+    list_display = ('c_id', 'category_name', 'category_description', 'created_date', 'modified_date')
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('p_id', 'name', 'price', 'description', 'category', 'quantity', 'brand', 'stock', 'discount')

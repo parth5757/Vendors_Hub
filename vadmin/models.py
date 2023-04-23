@@ -28,6 +28,7 @@ class User(models.Model):
 class Category(models.Model):
     class Meta:
         db_table = 'Category'
+    c_id = models.AutoField(primary_key=True)
     category_name = models.CharField(max_length=100)
     category_description = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
