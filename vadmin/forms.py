@@ -1,5 +1,5 @@
-# from django import forms
-# from .models import User
+from django import forms
+from .models import User, Product
     
 # class UserForm(forms.ModelForm):
 #     password = forms.CharField(widget=forms.PasswordInput)
@@ -17,3 +17,9 @@
 #     #         if password != confirm_password:
 #     #             raise forms.ValidationError("Passwords do not match")
 #     #     return cleaned_data
+
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['name', 'price', 'description', 'category', 'quantity', 'brand', 'stock', 'discount']

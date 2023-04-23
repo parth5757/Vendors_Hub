@@ -7,16 +7,31 @@ from vadmin.forms import ProductForm
 # from vadmin.models import User  
 from django.shortcuts import render
 from django.urls import path
-from .models import Product
+from .models import Product, Category
 
 def my_view(request):
     return render(request, 'index.html')
+
+def category(request):
+    categorys = Category.objects.all()
+    context = {'categorys': categorys}
+    return render(request, 'category.html', context)
 
 def product(request):
     products = Product.objects.all()
     context = {'products': products}
     return render(request, 'product.html', context)
 
+def add_category(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        description = request.POST['description']        
+        category = Category(category_name=name, category_description=description)
+        category.save()
+        return redirect('category')
+    else:
+        return render(request, 'add_category.html')
+    
 def add_product(request):
     if request.method == 'POST':
         name = request.POST['name']
@@ -41,20 +56,16 @@ def delete_product(request, id):
     return redirect('product')
 
 def update_product(request, id):
-    product = get_object_or_404(Product, p_id=id)
-    
+    product = Product.objects.get(p_id=id)
+    form = ProductForm(instance=product)
+    context = {'product': product, 'form': form}
+
     if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES, instance=product)
+        form = ProductForm(request.POST, instance=product)
         if form.is_valid():
             form.save()
             return redirect('product')
-    else:
-        form = ProductForm(instance=product)
-    
-    context = {
-        'form': form,
-    }
-    
+
     return render(request, 'update_product.html', context)
 
 def User(request):
@@ -106,3 +117,26 @@ def register(request):
     #     return render(request, 'index.html')
     # # Render the registration form
     return render(request, 'register.html')
+    
+def error(request, undefined_route):
+    return render(request, 'error_400.html')
+
+
+    
+def delete_category(request, id):
+    product = Product.objects.get(p_id=id)    
+    product.delete()
+    return redirect('product')
+
+def update_category(request, id):
+    product = Product.objects.get(p_id=id)
+    form = ProductForm(instance=product)
+    context = {'product': product, 'form': form}
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('product')
+
+    return render(request, 'update_product.html', context)
