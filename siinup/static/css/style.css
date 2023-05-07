@@ -1,0 +1,26 @@
+/* #abc{
+    color: #fff;
+    padding: 100px;
+    margin-left: 190px;
+    border-radius: 5px;
+} */
+body{
+    background: linear-gradient(to right, #f64e60, #2d1967);
+}
+.white_box{
+    background: linear-gradient(to right, #f64e60, #2d1967);
+}
+.modal-body{
+    background: linear-gradient(to right, #f64e60, #2d1967);   
+}
+#abc {
+    max-width: 100%;
+    height: auto;
+    text-align: center;
+}
+/* For screens with a max-width of 768px (mobile devices), adjust the image size */
+@media only screen and (max-width: 768px) {
+    #abc {
+        max-width: 50%;
+    }
+}

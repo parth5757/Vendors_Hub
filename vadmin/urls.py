@@ -4,8 +4,8 @@ from . import views
 urlpatterns = [
     path('', views.my_view, name="home"),
     path('home/', views.my_view, name="home"),
-    path('login', views.login, name="login"),
-    path('register', views.register, name="register"),
+    # path('login', views.login, name="login"),
+    # path('register', views.register, name="register"),
     path('user', views.User, name="user"),
     path('product', views.product, name="product"),
     path('category', views.category, name='category'),
@@ -15,5 +15,6 @@ urlpatterns = [
     path('add_category', views.add_category, name="add_category"),
     path('delete_category/<int:id>/', views.delete_category, name='delete_category'),
     path('update_category/<int:id>/', views.update_category, name='update_category'),
-    path('<str:undefined_route>/', views.error, name='error'),
+    path('about', views.about, name='about'),
+    path('<str:undefined_route>/', views.error, name='error')
 ]

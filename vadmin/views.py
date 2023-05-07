@@ -3,11 +3,12 @@ from django.contrib import messages
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect, get_object_or_404
-from vadmin.forms import ProductForm
+from vadmin.forms import ProductForm, CategoryForm
 # from vadmin.models import User  
 from django.shortcuts import render
 from django.urls import path
-from .models import Product, Category
+from .models import *
+import re
 
 def my_view(request):
     return render(request, 'index.html')
@@ -73,50 +74,7 @@ def User(request):
     # User = User.objects.all()
     # return render(request, 'users.html', {'users': User})
 # 
-def login(request):
-    # if request.method == 'POST':
-    #     email = request.POST['email']
-    #     password = request.POST['password']
-    #     user = authenticate(email=email, password=password)
-    #     if user is not None:
-    #         auth_login(request, user)
-    #         return render(request, 'index.html')
-    #     else:
-    #         pass
-    return render(request, 'login.html')
 
-
-def register(request):
-    # if request.method == "POST":  
-    #     form = UserForm(request.POST)  
-    #     if form.is_valid():  
-    #         try:  
-    #             form.save()  
-    #             return redirect('/home')  
-    #         except:  
-    #             pass  
-    # else:  
-    #     form = UserForm()  
-    # return render(request, 'register.html')
-    # if request.method == 'POST':
-    #     name = request.POST.get('name')
-    #     email = request.POST.get('email')
-    #     password = request.POST.get('password')
-    #     phone = request.POST.get('phone')
-    #     address = request.POST.get('address')
-    #     city = request.POST.get('city')
-    #     state = request.POST.get('state')
-    #     zip = request.POST.get('zip')
-    #     country = request.POST.get('country')
-        
-    #     # Create a new user object and save it to the database
-    #     new_user = User(name=name, email=email, password=password, phone=phone, address=address, city=city, state=state, zip=zip, country=country)
-    #     new_user.save()
-        
-    #     # Redirect to a success page or display a success message
-    #     return render(request, 'index.html')
-    # # Render the registration form
-    return render(request, 'register.html')
     
 def error(request, undefined_route):
     return render(request, 'error_400.html')
@@ -124,19 +82,23 @@ def error(request, undefined_route):
 
     
 def delete_category(request, id):
-    product = Product.objects.get(p_id=id)    
-    product.delete()
-    return redirect('product')
+    category = Category.objects.get(c_id=id)    
+    category.delete()
+    return redirect('category')
 
 def update_category(request, id):
-    product = Product.objects.get(p_id=id)
-    form = ProductForm(instance=product)
-    context = {'product': product, 'form': form}
-
+    category = Category.objects.get(c_id=id)
+    form = CategoryForm(instance=category)
+    context = {'category': category, 'form': form}
     if request.method == 'POST':
-        form = ProductForm(request.POST, instance=product)
+        form = CategoryForm(request.POST, instance=category)
         if form.is_valid():
             form.save()
-            return redirect('product')
+            return redirect('category')
 
-    return render(request, 'update_product.html', context)
+    return render(request, 'update_category.html', context)
+
+def about(request):
+    return render(request, 'about.html')
+
+

@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    {% include "css.html" %}
+    <link rel="icon" href="{% static 'img/mini_logo.png'%}" type="image/png">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body{
+            background: linear-gradient(to right, #f64e60, #2d1967);
+        }
+        .white_box{
+            background: linear-gradient(to right, #f64e60, #2d1967);
+        }
+        .modal-body{
+            background: linear-gradient(to right, #f64e60, #2d1967);   
+        }
+        #abc {
+            max-width: 100%;
+            height: auto;
+            text-align: center;
+        }
+        /* For screens with a max-width of 768px (mobile devices), adjust the image size */
+        @media only screen and (max-width: 768px) {
+            #abc {
+                max-width: 50%;
+            }
+        }
+    </style>
+</head>
+<body class="crm_body_bg">
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <!-- <img src="{% static 'img/logoVH4.png' %}" id="abc" alt="Vendor's Hub">   -->
+                <div class="white_box mb_30">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">                        
+                            <div class="modal-content cs_modal">
+                                <div class="modal-header justify-content-center theme_bg_1">
+                                    <h5 class="modal-title text_white">Sign in</h5>
+                                </div>
+                                <div class="modal-body">
+                                    {% if error_message %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error_message }}
+                                    </div>
+                                    {% endif %}
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <div class="">
+                                            <input type="text" id="email" name="email" class="form-control" placeholder="Enter your email" required >
+                                        </div>
+                                        <div class="">
+                                            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                                        </div>
+                                            <button type="submit" class="btn_1 full_width text-center">Login</button>
+                                            <p>Need an account? <a data-bs-target="#sing_up" data-bs-dismiss="modal" href="{% url 'signup' %}"> Sign Up</a></p>
+                                        <div class="text-center">
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#forgot_password" data-bs-dismiss="modal" class="pass_forget_btn">Forget Password?</a>
+                                        </div>
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="footer_iner text-center">
+            <p>2023 © All copyright by  <a href="#"> <i class="ti-heart"></i> </a><a href="#"> Vendor'S Hub</a></p>
+        </div>
+    </div>
+    {% include "js.html" %}
+</body>
+</html>

@@ -86,6 +86,8 @@ WSGI_APPLICATION = 'Vendors_Hub.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -93,17 +95,25 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default' : {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'vendor',
+#         'USER': 'parth',
+#         'PASSWORD': 'parth',
+#     }
+# }
 
-DATABASES = {  
-    'default': {  
-        'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'vendor',
-        'USER':'root',  
-        'PASSWORD':'mysql',  
-        'HOST':'localhost',  
-        'PORT':'3306'  
-    }  
-} 
+# DATABASES = {  
+#     'default': {  
+#         'ENGINE': 'django.db.backends.mysql',  
+#         'NAME': 'vendor',
+#         'USER':'root',  
+#         'PASSWORD':'mysql',  
+#         'HOST':'localhost',  
+#         'PORT':'3306'  
+#     }  
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

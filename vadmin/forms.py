@@ -1,5 +1,5 @@
 from django import forms
-from .models import User, Product
+from .models import User, Product, Category
     
 # class UserForm(forms.ModelForm):
 #     password = forms.CharField(widget=forms.PasswordInput)
@@ -23,3 +23,8 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['name', 'price', 'description', 'category', 'quantity', 'brand', 'stock', 'discount']
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['category_name', 'category_description']
