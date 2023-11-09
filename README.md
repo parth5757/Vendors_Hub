@@ -12,5 +12,9 @@ python manage.py migrate
 ```
 
 ``` python
+python manage.py createsuperuser
+```
+
+``` python
 python manage.py runserver
 ```
